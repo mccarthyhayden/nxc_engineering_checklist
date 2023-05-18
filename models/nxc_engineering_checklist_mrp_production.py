@@ -1,6 +1,6 @@
 from odoo import api, fields, models
 
-class SaleOrder(models.Model):
+class NxcEngineeringChecklistMrpProduction(models.Model):
     _inherit = 'mrp.production'
 
     #Sales Checklist Status Indicator
