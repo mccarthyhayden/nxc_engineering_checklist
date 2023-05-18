@@ -1,0 +1,77 @@
+<?xml version="1.0"?>
+<odoo>
+  <data>
+    <record id="view_nxc_engineering_checklist_form" model="ir.ui.view">
+      <field name="name">nxc.engineering.checklist.form</field>
+      <field name="model">nxc.engineering.checklist</field>
+      <field name="inherit_id">mrp.mrp_production_form_view</field>
+      <field name="arch" type="xml">
+        <form string="Engineering Checklist" version="1.0">
+          <sheet>
+            <xpath expr="//form[1]/sheet[1]/group[1]/group[1]/field[@name='product_id']" position="after">
+              <field name="product_categ_id" attrs="{}" invisible="1"/>
+            </xpath>
+            <xpath expr="//field[@name='user_id']" position="after">
+              <field name="rebuild_of" string="Rebuild Of"/>
+              <field widget="kanban_state_selection" name="checklist_status" string="Engineering Status" force_save="True" attrs="{}" readonly="1"/>
+              <field name="internal_design_approval" string="Internal Design Approval" widget="boolean_toggle" attrs="{"readonly": ["|",["design_complete","=",False],["internal_design_approval","=",True]], "invisible": ["|",["product_categ_id","=",11],["product_categ_id","=",16]]}" force_save="True"/>
+              <field name="customer_design_approval" string="Customer Design Approval" widget="boolean_toggle" attrs="{"readonly": [["internal_design_approval","=",False]], "invisible": ["|",["product_categ_id","=",11],["product_categ_id","=",16]]}" force_save="True"/>
+            </xpath>
+            <page string="Design Checklist" name="page_design_checklist" attrs="{"invisible": ["|",["product_categ_id","=",11],["product_categ_id","=",16]]}">
+              <group name="group_design_checklist">
+                <group name="group_design_checklist_left">
+                  <field name="design_item_1" attrs="{"readonly": [["design_complete","=",True]]}" force_save="True"/>
+                  <field name="design_item_2" attrs="{"readonly": [["design_complete","=",True]]}" force_save="True"/>
+                  <field name="design_item_3" attrs="{"readonly": [["design_complete","=",True]]}" force_save="True"/>
+                  <field name="design_item_4" attrs="{"readonly": [["design_complete","=",True]]}" force_save="True"/>
+                  <field name="design_item_5" attrs="{"readonly": [["design_complete","=",True]]}" force_save="True"/>
+                  <field name="design_item_6" attrs="{"readonly": [["design_complete","=",True]]}" force_save="True"/>
+                  </group>
+                <group name="group_design_checklist_right">
+                  <field name="design_item_7" attrs="{"readonly": [["design_complete","=",True]]}" force_save="True"/>
+                  <field name="design_item_8" attrs="{"readonly": [["design_complete","=",True]]}" force_save="True"/>
+                  <field name="design_item_9" attrs="{"readonly": [["design_complete","=",True]]}" force_save="True"/>
+                  <field name="design_item_10" attrs="{"readonly": [["design_complete","=",True]]}" force_save="True"/>
+                  <field name="design_complete" string="Design Checklist Complete" widget="boolean_toggle" attrs="{}" force_save="True" invisible="1"/>
+                </group>
+              </group>
+            </page>
+            <page string="Design Build Checklist" name="page_design_build_checklist" attrs="{"invisible": [["customer_design_approval","=",False]]}">
+              <group name="group_design_build_checklist">
+                <group name="group_design_build_checklist_left">
+                  <field name="design_build_item_1" attrs="{"readonly": [["design_build_complete","=",True]]}" force_save="True"/>
+                  <field name="design_build_item_2" attrs="{"readonly": [["design_build_complete","=",True]]}" force_save="True"/>
+                  <field name="design_build_item_3" attrs="{"readonly": [["design_build_complete","=",True]]}" force_save="True"/>
+                  <field name="design_build_item_4" attrs="{"readonly": [["design_build_complete","=",True]]}" force_save="True"/>
+                  <field name="design_build_item_5" attrs="{"readonly": [["design_build_complete","=",True]]}" force_save="True"/>
+                  <field name="design_build_item_6" attrs="{"readonly": [["design_build_complete","=",True]]}" force_save="True"/>
+                  <field name="design_build_item_7" attrs="{"readonly": [["design_build_complete","=",True]]}" force_save="True"/>
+                  <field name="design_build_item_8" attrs="{"readonly": [["design_build_complete","=",True]]}" force_save="True"/>
+                  <field name="design_build_item_9" attrs="{"readonly": [["design_build_complete","=",True]]}" force_save="True"/>
+                </group>
+                <group name="group_design_build_checklist_right">
+                  <field name="design_build_item_10" attrs="{"readonly": [["design_build_complete","=",True]]}" force_save="True"/>
+                  <field name="design_build_item_11" attrs="{"readonly": [["design_build_complete","=",True]]}" force_save="True"/>
+                  <field name="design_build_item_12" attrs="{"readonly": [["design_build_complete","=",True]]}" force_save="True"/>
+                  <field name="design_build_item_13" attrs="{"readonly": [["design_build_complete","=",True]]}" force_save="True"/>
+                  <field name="design_build_item_14" attrs="{"readonly": [["design_build_complete","=",True]]}" force_save="True"/>
+                  <field name="design_build_item_15" attrs="{"readonly": [["design_build_complete","=",True]]}" force_save="True"/>
+                  <field name="design_build_complete" string="Design Build Checklist Complete" widget="boolean_toggle" attrs="{}" invisible="1"/>
+                </group>
+              </group>
+            </page>
+            <page string="Product Configuration Checklist" name="page_product_config_checklist" attrs="{"invisible": [["design_build_complete","=",False]]}">
+              <group name="group_product_config_checklist">
+                <group name="group_product_config_checklist_left">
+                  <field name="product_config_item_1" string="CAD Drawing Uploaded (In BOM Operations Steps)" attrs="{"readonly": [["product_config_complete","=",True]]}" force_save="True"/>
+                  <field name="product_config_item_2" string="Manufacturing Order Configured" attrs="{"readonly": [["product_config_complete","=",True]]}" force_save="True"/>
+                  <field name="product_config_item_3" string="Quality Checks Reviewed" attrs="{"readonly": [["product_config_complete","=",True]]}" force_save="True"/>
+                  <field name="product_config_complete" string="Product Configuration Checklist Complete" widget="boolean_toggle" attrs="{}" invisible="1"/>
+                </group>
+              </group>
+            </page>
+          </sheet>
+        </form>
+    </record>
+  </data>
+</odoo>
