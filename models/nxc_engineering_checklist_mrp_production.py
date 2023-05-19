@@ -4,7 +4,10 @@ class NxcEngineeringChecklistMrpProduction(models.Model):
     _inherit = 'mrp.production'
 
     #rebuild of field
-    rebuild_of=fields.Many2One()
+    rebuild_of = fields.Many2One(
+    'mrp.production',
+    string='Rebuild Of',
+    )
 
     #approvals
     internal_design_apprval=fields.Boolean(string="Internal Design Approval" readonly=True invisible="|(product_categ_id=11)|(product_categ_id=16)")
