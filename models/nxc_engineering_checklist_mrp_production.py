@@ -125,7 +125,7 @@ class NxcEngineeringChecklistMrpProduction(models.Model):
         else:
           record['product_config_complete'] = False
       
-    @api.onchange('rebuild_of', 'product_categ_id', 'design_complete', 'design_build_complete', 'product_configuration_complete', 'internal_design_approval', 'customer_design_approval')
+    @api.onchange('rebuild_of', 'product_categ_id', 'design_complete', 'design_build_complete', 'product_config_complete', 'internal_design_approval', 'customer_design_approval')
     def _compute_engineering_checklist_status(self):
     #This method computes the value of the `engineering_checklist_status` field.
     #Returns The value of the `engineering_checklist_status` field.
@@ -134,7 +134,7 @@ class NxcEngineeringChecklistMrpProduction(models.Model):
           record['engineering_checklist_status'] = 'done'
         elif record.product_categ_id in [11, 16]:
           record['engineering_checklist_status'] = 'done'
-        elif record.design_complete and record.design_build_complete and record.product_configuration_complete and record.internal_design_approval and record.customer_design_approval:
+        elif record.design_complete and record.design_build_complete and record.product_config_complete and record.internal_design_approval and record.customer_design_approval:
           record['engineering_checklist_status'] = 'done'
         else:
           record['engineering_checklist_status'] = 'blocked'

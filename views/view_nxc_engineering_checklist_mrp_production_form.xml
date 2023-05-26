@@ -13,7 +13,7 @@
           <field name="rebuild_of" widget="many2one"/>
           <field name="engineering_checklist_status" widget="kanban_state_selection" force_save="True" readonly="True"/>
           <field name="internal_design_approval" widget="boolean_toggle" attrs="{'readonly': ['|',['design_complete','=',False],['internal_design_approval','=',True]], 'invisible': ['|',['product_categ_id','=',11],['product_categ_id','=',16]]}" force_save="True"/>
-          <field name="customer_design_approval" widget="boolean_toggle" attrs="{'readonly': [['internal_design_approval','=',False]], 'invisible': ['|',['product_categ_id','=',11],['product_categ_id','=',16]]}" force_save="True"/>
+          <field name="customer_design_approval" widget="boolean_toggle" attrs="{'readonly': ['|',['internal_design_approval','=',False],['customer_design_approval','=',True]], 'invisible': ['|',['product_categ_id','=',11],['product_categ_id','=',16]]}" force_save="True"/>
         </xpath>
         <xpath expr="//page[@name='miscellaneous']" position="after">
           <page string="Design Checklist" name="page_design_checklist" attrs="{'invisible': ['|',['product_categ_id','=',11],['product_categ_id','=',16]]}">
