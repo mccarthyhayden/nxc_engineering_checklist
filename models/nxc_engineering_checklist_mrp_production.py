@@ -12,7 +12,7 @@ class NxcEngineeringChecklistMrpProduction(models.Model):
     product_categ_id=fields.Integer(string="Product Category ID")
 
     #approvals
-    internal_design_apprval=fields.Boolean(string="Internal Design Approval")
+    internal_design_approval=fields.Boolean(string="Internal Design Approval")
     customer_design_approval=fields.Boolean(string="Internal Design Approval")
     
     #Sales Checklist Status Indicator
