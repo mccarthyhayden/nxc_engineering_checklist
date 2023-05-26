@@ -4,7 +4,7 @@ class NxcEngineeringChecklistMrpProduction(models.Model):
     _inherit = 'mrp.production'
 
     #rebuild of field
-    rebuild_of = fields.Many2One(
+    rebuild_of = fields.Many2one(
     'mrp.production',
     string='Rebuild Of',
     )
