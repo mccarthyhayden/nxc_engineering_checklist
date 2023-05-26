@@ -4,7 +4,7 @@
     <record id="view_nxc_engineering_checklist_form" model="ir.ui.view">
       <field name="name">nxc.engineering.checklist.form</field>
       <field name="model">nxc.engineering.checklist</field>
-      <field name="inherit_id">mrp.mrp_production_form_view</field>
+      <field name="inherit_id" ref="mrp.mrp_production_form_view"/>
       <field name="arch" type="xml">
         <form string="Engineering Checklist" version="1.0">
           <sheet>
