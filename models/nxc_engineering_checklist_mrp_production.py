@@ -81,9 +81,9 @@ class NxcEngineeringChecklistMrpProduction(models.Model):
           record.design_item_9 and
           record.design_item_10
         ):
-          return True
+          record['design_complete'] = True
         else:
-          return False
+          record['design_complete'] = False
 
     @api.onchange('design_build_item_1', 'design_build_item_2', 'design_build_item_3', 'design_build_item_4', 'design_build_item_5', 'design_build_item_6', 'design_build_item_7', 'design_build_item_8', 'design_build_item_9', 'design_build_item_10', 'design_build_item_11', 'design_build_item_12', 'design_build_item_13', 'design_build_item_14', 'design_build_item_15')
     def _compute_design_build_complete(self):
@@ -107,9 +107,9 @@ class NxcEngineeringChecklistMrpProduction(models.Model):
           record.design_build_item_14 and
           record.design_build_item_15
         ):
-          return True
+          record['design_build_complete'] = True
         else:
-          return False
+          record['design_build_complete'] = False
       
     @api.onchange('product_config_item_1', 'product_config_item_2', 'product_config_item_3')
     def _compute_product_config_complete(self):
@@ -121,9 +121,9 @@ class NxcEngineeringChecklistMrpProduction(models.Model):
           record.product_config_item_2 and
           record.product_config_item_3
         ):
-          return True
+          record['product_config_complete'] = True
         else:
-          return False
+          record['product_config_complete'] = False
       
     @api.onchange('rebuild_of', 'product_categ_id', 'design_complete', 'design_build_complete', 'product_configuration_complete', 'internal_design_approval', 'customer_design_approval')
     def _compute_engineering_checklist_status(self):
@@ -131,10 +131,10 @@ class NxcEngineeringChecklistMrpProduction(models.Model):
     #Returns The value of the `engineering_checklist_status` field.
       for record in self:
         if record.rebuild_of.engineering_checklist_status == 'done':
-          return 'done'
+          record['engineering_checklist_status'] = 'done'
         elif record.product_categ_id in [11, 16]:
-          return 'done'
+          record['engineering_checklist_status'] = 'done'
         elif record.design_complete and record.design_build_complete and record.product_configuration_complete and record.internal_design_approval and record.customer_design_approval:
-          return 'done'
+          record['engineering_checklist_status'] = 'done'
         else:
-          return 'blocked'
+          record['engineering_checklist_status'] = 'blocked'
