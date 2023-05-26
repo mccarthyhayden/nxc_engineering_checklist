@@ -13,7 +13,7 @@ class NxcEngineeringChecklistMrpProduction(models.Model):
 
     #approvals
     internal_design_approval=fields.Boolean(string="Internal Design Approval")
-    customer_design_approval=fields.Boolean(string="Internal Design Approval")
+    customer_design_approval=fields.Boolean(string="Customer Design Approval")
     
     #Sales Checklist Status Indicator
     engineering_checklist_status = fields.Selection([
