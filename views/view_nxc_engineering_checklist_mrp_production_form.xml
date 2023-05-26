@@ -19,18 +19,18 @@
           <page string="Design Checklist" name="page_design_checklist" attrs="{'invisible': ['|',['product_categ_id','=',11],['product_categ_id','=',16]]}">
             <group name="group_design_checklist">
               <group name="group_design_checklist_left">
-                <field name="design_item_1" widget="toggle_button" attrs="{'readonly': [['design_complete','=',True]]}" force_save="True"/>
-                <field name="design_item_2" widget="toggle_button" attrs="{'readonly': [['design_complete','=',True]]}" force_save="True"/>
-                <field name="design_item_3" widget="toggle_button" attrs="{'readonly': [['design_complete','=',True]]}" force_save="True"/>
-                <field name="design_item_4" widget="toggle_button" attrs="{'readonly': [['design_complete','=',True]]}" force_save="True"/>
-                <field name="design_item_5" widget="toggle_button" attrs="{'readonly': [['design_complete','=',True]]}" force_save="True"/>
-                <field name="design_item_6" widget="toggle_button" attrs="{'readonly': [['design_complete','=',True]]}" force_save="True"/>
+                <field name="design_item_1" widget="boolean" attrs="{'readonly': [['design_complete','=',True]]}" force_save="True"/>
+                <field name="design_item_2" widget="boolean" attrs="{'readonly': [['design_complete','=',True]]}" force_save="True"/>
+                <field name="design_item_3" widget="boolean" attrs="{'readonly': [['design_complete','=',True]]}" force_save="True"/>
+                <field name="design_item_4" widget="boolean" attrs="{'readonly': [['design_complete','=',True]]}" force_save="True"/>
+                <field name="design_item_5" widget="boolean" attrs="{'readonly': [['design_complete','=',True]]}" force_save="True"/>
+                <field name="design_item_6" widget="boolean" attrs="{'readonly': [['design_complete','=',True]]}" force_save="True"/>
                 </group>
               <group name="group_design_checklist_right">
-                <field name="design_item_7" widget="toggle_button" attrs="{'readonly': [['design_complete','=',True]]}" force_save="True"/>
+                <field name="design_item_7" widget="boolean" attrs="{'readonly': [['design_complete','=',True]]}" force_save="True"/>
                 <field name="design_item_8" widget="selection" attrs="{'readonly': [['design_complete','=',True]]}" force_save="True"/>
-                <field name="design_item_9" widget="toggle_button" attrs="{'readonly': [['design_complete','=',True]]}" force_save="True"/>
-                <field name="design_item_10" widget="toggle_button" attrs="{'readonly': [['design_complete','=',True]]}" force_save="True"/>
+                <field name="design_item_9" widget="boolean" attrs="{'readonly': [['design_complete','=',True]]}" force_save="True"/>
+                <field name="design_item_10" widget="boolean" attrs="{'readonly': [['design_complete','=',True]]}" force_save="True"/>
                 <field name="design_complete" widget="boolean_toggle" force_save="True" readonly="True" invisible="True"/>
               </group>
             </group>
@@ -38,23 +38,23 @@
           <page string="Design Build Checklist" name="page_design_build_checklist" attrs="{'invisible': [['customer_design_approval','=',False]]}">
             <group name="group_design_build_checklist">
               <group name="group_design_build_checklist_left">
-                <field name="design_build_item_1" widget="toggle_button" attrs="{'readonly': [['design_build_complete','=',True]]}" force_save="True"/>
-                <field name="design_build_item_2" widget="toggle_button" attrs="{'readonly': [['design_build_complete','=',True]]}" force_save="True"/>
-                <field name="design_build_item_3" widget="toggle_button" attrs="{'readonly': [['design_build_complete','=',True]]}" force_save="True"/>
-                <field name="design_build_item_4" widget="toggle_button" attrs="{'readonly': [['design_build_complete','=',True]]}" force_save="True"/>
-                <field name="design_build_item_5" widget="toggle_button" attrs="{'readonly': [['design_build_complete','=',True]]}" force_save="True"/>
-                <field name="design_build_item_6" widget="toggle_button" attrs="{'readonly': [['design_build_complete','=',True]]}" force_save="True"/>
-                <field name="design_build_item_7" widget="toggle_button" attrs="{'readonly': [['design_build_complete','=',True]]}" force_save="True"/>
-                <field name="design_build_item_8" widget="toggle_button" attrs="{'readonly': [['design_build_complete','=',True]]}" force_save="True"/>
-                <field name="design_build_item_9" widget="toggle_button" attrs="{'readonly': [['design_build_complete','=',True]]}" force_save="True"/>
+                <field name="design_build_item_1" widget="boolean" attrs="{'readonly': [['design_build_complete','=',True]]}" force_save="True"/>
+                <field name="design_build_item_2" widget="boolean" attrs="{'readonly': [['design_build_complete','=',True]]}" force_save="True"/>
+                <field name="design_build_item_3" widget="boolean" attrs="{'readonly': [['design_build_complete','=',True]]}" force_save="True"/>
+                <field name="design_build_item_4" widget="boolean" attrs="{'readonly': [['design_build_complete','=',True]]}" force_save="True"/>
+                <field name="design_build_item_5" widget="boolean" attrs="{'readonly': [['design_build_complete','=',True]]}" force_save="True"/>
+                <field name="design_build_item_6" widget="boolean" attrs="{'readonly': [['design_build_complete','=',True]]}" force_save="True"/>
+                <field name="design_build_item_7" widget="boolean" attrs="{'readonly': [['design_build_complete','=',True]]}" force_save="True"/>
+                <field name="design_build_item_8" widget="boolean" attrs="{'readonly': [['design_build_complete','=',True]]}" force_save="True"/>
+                <field name="design_build_item_9" widget="boolean" attrs="{'readonly': [['design_build_complete','=',True]]}" force_save="True"/>
               </group>
               <group name="group_design_build_checklist_right">
-                <field name="design_build_item_10" widget="toggle_button" attrs="{'readonly': [['design_build_complete','=',True]]}" force_save="True"/>
-                <field name="design_build_item_11" widget="toggle_button" attrs="{'readonly': [['design_build_complete','=',True]]}" force_save="True"/>
+                <field name="design_build_item_10" widget="boolean" attrs="{'readonly': [['design_build_complete','=',True]]}" force_save="True"/>
+                <field name="design_build_item_11" widget="boolean" attrs="{'readonly': [['design_build_complete','=',True]]}" force_save="True"/>
                 <field name="design_build_item_12" widget="selection" attrs="{'readonly': [['design_build_complete','=',True]]}" force_save="True"/>
-                <field name="design_build_item_13" widget="toggle_button" attrs="{'readonly': [['design_build_complete','=',True]]}" force_save="True"/>
-                <field name="design_build_item_14" widget="toggle_button" attrs="{'readonly': [['design_build_complete','=',True]]}" force_save="True"/>
-                <field name="design_build_item_15" widget="toggle_button" attrs="{'readonly': [['design_build_complete','=',True]]}" force_save="True"/>
+                <field name="design_build_item_13" widget="boolean" attrs="{'readonly': [['design_build_complete','=',True]]}" force_save="True"/>
+                <field name="design_build_item_14" widget="boolean" attrs="{'readonly': [['design_build_complete','=',True]]}" force_save="True"/>
+                <field name="design_build_item_15" widget="boolean" attrs="{'readonly': [['design_build_complete','=',True]]}" force_save="True"/>
                 <field name="design_build_complete" widget="boolean_toggle" readonly="True" invisible="True"/>
               </group>
             </group>
@@ -62,9 +62,9 @@
           <page string="Product Configuration Checklist" name="page_product_config_checklist" attrs="{'invisible': [['design_build_complete','=',False]]}">
             <group name="group_product_config_checklist">
               <group name="group_product_config_checklist_left">
-                <field name="product_config_item_1" widget="toggle_button" attrs="{'readonly': [['product_config_complete','=',True]]}" force_save="True"/>
-                <field name="product_config_item_2" widget="toggle_button" attrs="{'readonly': [['product_config_complete','=',True]]}" force_save="True"/>
-                <field name="product_config_item_3" widget="toggle_button" attrs="{'readonly': [['product_config_complete','=',True]]}" force_save="True"/>
+                <field name="product_config_item_1" widget="boolean" attrs="{'readonly': [['product_config_complete','=',True]]}" force_save="True"/>
+                <field name="product_config_item_2" widget="boolean" attrs="{'readonly': [['product_config_complete','=',True]]}" force_save="True"/>
+                <field name="product_config_item_3" widget="boolean" attrs="{'readonly': [['product_config_complete','=',True]]}" force_save="True"/>
                 <field name="product_config_complete" widget="boolean_toggle" readonly="True" invisible="True"/>
               </group>
             </group>
