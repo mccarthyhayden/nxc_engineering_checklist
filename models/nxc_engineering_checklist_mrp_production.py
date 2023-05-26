@@ -68,69 +68,73 @@ class NxcEngineeringChecklistMrpProduction(models.Model):
     def _compute_design_complete(self):
     #This function determines whether the design checklist is complete.
     #Returns True if the checklist is complete, False otherwise.
-      if (
-        record.design_item_1 and
-        record.design_item_2 and
-        record.design_item_3 and
-        record.design_item_4 and
-        record.design_item_5 and
-        record.design_item_6 and
-        record.design_item_7 and
-        record.design_item_8 in ('1', '2') and
-        record.design_item_9 and
-        record.design_item_10
-      ):
-        return True
-      else:
-        return False
+      for record in self:
+        if (
+          record.design_item_1 and
+          record.design_item_2 and
+          record.design_item_3 and
+          record.design_item_4 and
+          record.design_item_5 and
+          record.design_item_6 and
+          record.design_item_7 and
+          record.design_item_8 in ('1', '2') and
+          record.design_item_9 and
+          record.design_item_10
+        ):
+          return True
+        else:
+          return False
 
     @api.onchange('design_build_item_1', 'design_build_item_2', 'design_build_item_3', 'design_build_item_4', 'design_build_item_5', 'design_build_item_6', 'design_build_item_7', 'design_build_item_8', 'design_build_item_9', 'design_build_item_10', 'design_build_item_11', 'design_build_item_12', 'design_build_item_13', 'design_build_item_14', 'design_build_item_15')
     def _compute_design_build_complete(self):
     #This function determines whether the design build checklist is complete.
     #Returns True if the checklist is complete, False otherwise.
-      if (
-        record.design_build_item_1 and
-        record.design_build_item_2 and
-        record.design_build_item_3 and
-        record.design_build_item_4 and
-        record.design_build_item_5 and
-        record.design_build_item_6 and
-        record.design_build_item_7 and
-        record.design_build_item_8 and
-        record.design_build_item_9 and
-        record.design_build_item_10 and
-        record.design_build_item_11 and
-        record.design_build_item_12 in ('1', '2') and
-        record.design_build_item_13 and
-        record.design_build_item_14 and
-        record.design_build_item_15
-      ):
-        return True
-      else:
-        return False
+      for record in self:
+        if (
+          record.design_build_item_1 and
+          record.design_build_item_2 and
+          record.design_build_item_3 and
+          record.design_build_item_4 and
+          record.design_build_item_5 and
+          record.design_build_item_6 and
+          record.design_build_item_7 and
+          record.design_build_item_8 and
+          record.design_build_item_9 and
+          record.design_build_item_10 and
+          record.design_build_item_11 and
+          record.design_build_item_12 in ('1', '2') and
+          record.design_build_item_13 and
+          record.design_build_item_14 and
+          record.design_build_item_15
+        ):
+          return True
+        else:
+          return False
       
     @api.onchange('product_config_item_1', 'product_config_item_2', 'product_config_item_3')
     def _compute_product_config_complete(self):
     #This function determines whether the product config checklist is complete.
     #Returns True if the checklist is complete, False otherwise.
-      if (
-        record.product_config_item_1 and
-        record.product_config_item_2 and
-        record.product_config_item_3
-      ):
-        return True
-      else:
-        return False
+      for record in self:
+        if (
+          record.product_config_item_1 and
+          record.product_config_item_2 and
+          record.product_config_item_3
+        ):
+          return True
+        else:
+          return False
       
     @api.onchange('rebuild_of', 'product_categ_id', 'design_complete', 'design_build_complete', 'product_configuration_complete', 'internal_design_approval', 'customer_design_approval')
     def _compute_engineering_checklist_status(self):
     #This method computes the value of the `engineering_checklist_status` field.
     #Returns The value of the `engineering_checklist_status` field.
-      if record.rebuild_of.engineering_checklist_status == 'done':
-        return 'done'
-      elif record.product_categ_id in [11, 16]:
-        return 'done'
-      elif record.design_complete and record.design_build_complete and record.product_configuration_complete and record.internal_design_approval and record.customer_design_approval:
-        return 'done'
-      else:
-        return 'blocked'
+      for record in self:
+        if record.rebuild_of.engineering_checklist_status == 'done':
+          return 'done'
+        elif record.product_categ_id in [11, 16]:
+          return 'done'
+        elif record.design_complete and record.design_build_complete and record.product_configuration_complete and record.internal_design_approval and record.customer_design_approval:
+          return 'done'
+        else:
+          return 'blocked'
