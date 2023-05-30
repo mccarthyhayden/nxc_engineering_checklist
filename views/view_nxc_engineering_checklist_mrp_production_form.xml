@@ -59,7 +59,7 @@
               </group>
             </group>
           </page>
-          <page string="Product Configuration Checklist" name="page_product_config_checklist" attrs="{'invisible': ['|'['design_build_complete','=',False],['record.rebuild_of.engineering_checklist_status','=','done']]}">
+          <page string="Product Configuration Checklist" name="page_product_config_checklist" attrs="{'invisible': ['|',['design_build_complete','=',False],['record.rebuild_of.engineering_checklist_status','=','done']]}">
             <group name="group_product_config_checklist">
               <group name="group_product_config_checklist_left">
                 <field name="product_config_item_1" widget="boolean" attrs="{'readonly': [['product_config_complete','=',True]]}" force_save="True"/>
