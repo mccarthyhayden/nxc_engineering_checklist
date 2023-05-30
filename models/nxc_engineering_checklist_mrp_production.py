@@ -15,14 +15,14 @@ class NxcEngineeringChecklistMrpProduction(models.Model):
     product_categ_id=fields.Integer(string="Product Category ID")
 
     #approvals
-    internal_design_approval=fields.Boolean(string="Internal Design Approval")
-    customer_design_approval=fields.Boolean(string="Customer Design Approval")
+    internal_design_approval=fields.Boolean(string="Internal Design Approval", tracking = True)
+    customer_design_approval=fields.Boolean(string="Customer Design Approval", tracking = True)
     
     #Sales Checklist Status Indicator
     engineering_checklist_status = fields.Selection([
         ('blocked','In-Progress'),
         ('done','Done'),
-    ], string="Checklist Status", compute="_compute_engineering_checklist_status")
+    ], string="Checklist Status", compute="_compute_engineering_checklist_status", tracking = True)
     
     #Design Checklist Items
     design_item_1 = fields.Boolean(string="Review CAD model and part print together to verify no discrepancies")
@@ -38,7 +38,7 @@ class NxcEngineeringChecklistMrpProduction(models.Model):
     ], string="Does Model require scaling for shrink or warp?")
     design_item_9 = fields.Boolean(string="Interconnected parts accommodate clearance required for upskin and downskin contours")
     design_item_10 = fields.Boolean(string="Customer specific print or CAD requirements are able to be manufactured")
-    design_complete = fields.Boolean(string="Design Checklist Complete", compute="_compute_design_complete")
+    design_complete = fields.Boolean(string="Design Checklist Complete", compute="_compute_design_complete", tracking = True)
 
     #Design Build Checklist Items
     design_build_item_1 = fields.Boolean(string="Review CAD model and part print together to verify no discrepancies")
@@ -59,13 +59,13 @@ class NxcEngineeringChecklistMrpProduction(models.Model):
     design_build_item_13 = fields.Boolean(string="Powder evacuation channels are to be semicircular in shape with a radius of .02-.06in")
     design_build_item_14 = fields.Boolean(string="Interconnected parts accommodate clearance required for upskin and downskin contours")
     design_build_item_15 = fields.Boolean(string="Export final file in STL format to SM (stockmodel) subfolder in project folder")
-    design_build_complete = fields.Boolean(string="Design Build Checklist Complete", compute="_compute_design_build_complete")
+    design_build_complete = fields.Boolean(string="Design Build Checklist Complete", compute="_compute_design_build_complete", tracking = True)
 
     #Product Configuration Checklist Items
     product_config_item_1 = fields.Boolean(string="CAD Drawing Uploaded (In BOM Operations Steps)")
     product_config_item_2 = fields.Boolean(string="Manufacturing Order Configured")
     product_config_item_3 = fields.Boolean(string="Quality Checks Reviewed")
-    product_config_complete = fields.Boolean(string="Product Configuration Checklist Complete", compute="_compute_product_config_complete")
+    product_config_complete = fields.Boolean(string="Product Configuration Checklist Complete", compute="_compute_product_config_complete", tracking = True)
 
     @api.onchange('design_item_1', 'design_item_2', 'design_item_3', 'design_item_4', 'design_item_5', 'design_item_6', 'design_item_7', 'design_item_8', 'design_item_9', 'design_item_10')
     def _compute_design_complete(self):
