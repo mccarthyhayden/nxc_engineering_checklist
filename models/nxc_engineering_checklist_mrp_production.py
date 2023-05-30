@@ -7,6 +7,7 @@ class NxcEngineeringChecklistMrpProduction(models.Model):
     rebuild_of = fields.Many2one(
     'mrp.production',
     string='Rebuild Of',
+    tracking = True,
     )
 
     rebuild_of_engineering_is_done = fields.Boolean(string="Rebuild Of Engineering Is Done", compute="_compute_rebuild_of_engineering_is_done")
