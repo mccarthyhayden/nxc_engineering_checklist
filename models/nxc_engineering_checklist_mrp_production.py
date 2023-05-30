@@ -9,6 +9,8 @@ class NxcEngineeringChecklistMrpProduction(models.Model):
     string='Rebuild Of',
     )
 
+    rebuild_of_engineering_is_done = fields.Boolean(string="Rebuild Of Engineering Is Done", compute="_compute_rebuild_of_engineering_is_done")
+
     product_categ_id=fields.Integer(string="Product Category ID")
 
     #approvals
@@ -138,3 +140,16 @@ class NxcEngineeringChecklistMrpProduction(models.Model):
           record['engineering_checklist_status'] = 'done'
         else:
           record['engineering_checklist_status'] = 'blocked'
+
+    @api.onchange('rebuild_of')
+    def _compute_rebuild_of_engineering_is_done(self):
+    #This method computes the value of the `engineering_checklist_status` field.
+    #Returns The value of the `engineering_checklist_status` field.
+      for record in self:
+        if record.rebuild_of.engineering_checklist_status:
+          if record.rebuild_of.engineering_checklist_status == 'done':
+            record['rebuild_of_engineering_is_done'] = True
+          else:
+            record['rebuild_of_engineering_is_done'] = False
+        else:
+          record['rebuild_of_engineering_is_done'] = False

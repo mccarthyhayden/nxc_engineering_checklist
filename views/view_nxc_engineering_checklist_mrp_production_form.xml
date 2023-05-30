@@ -11,12 +11,13 @@
         </xpath>
         <xpath expr="//field[@name='user_id']" position="after">
           <field name="rebuild_of" widget="many2one"/>
+          <field name="rebuild_of_engineering_is_done" widget="boolean_toggle" invisible="True"/>
           <field name="engineering_checklist_status" widget="kanban_state_selection" force_save="True" readonly="True"/>
-          <field name="internal_design_approval" widget="boolean_toggle" attrs="{'readonly': ['|',['design_complete','=',False],['internal_design_approval','=',True]], 'invisible': ['|','|',['product_categ_id','=',11],['product_categ_id','=',16],['record.rebuild_of.engineering_checklist_status','=','done']]}" force_save="True"/>
-          <field name="customer_design_approval" widget="boolean_toggle" attrs="{'readonly': ['|',['internal_design_approval','=',False],['customer_design_approval','=',True]], 'invisible': ['|','|',['product_categ_id','=',11],['product_categ_id','=',16],['record.rebuild_of.engineering_checklist_status','=','done']]}" force_save="True"/>
+          <field name="internal_design_approval" widget="boolean_toggle" attrs="{'readonly': ['|',['design_complete','=',False],['internal_design_approval','=',True]], 'invisible': ['|','|',['product_categ_id','=',11],['product_categ_id','=',16],['rebuild_of_engineering_is_done','=',True]]}" force_save="True"/>
+          <field name="customer_design_approval" widget="boolean_toggle" attrs="{'readonly': ['|',['internal_design_approval','=',False],['customer_design_approval','=',True]], 'invisible': ['|','|',['product_categ_id','=',11],['product_categ_id','=',16],['rebuild_of_engineering_is_done','=',True]]}" force_save="True"/>
         </xpath>
         <xpath expr="//page[@name='miscellaneous']" position="after">
-          <page string="Design Checklist" name="page_design_checklist" attrs="{'invisible': ['|','|',['product_categ_id','=',11],['product_categ_id','=',16],['record.rebuild_of.engineering_checklist_status','=','done']]}">
+          <page string="Design Checklist" name="page_design_checklist" attrs="{'invisible': ['|','|',['product_categ_id','=',11],['product_categ_id','=',16],['rebuild_of_engineering_is_done','=',True]]}">
             <group name="group_design_checklist">
               <group name="group_design_checklist_left">
                 <field name="design_item_1" widget="boolean" attrs="{'readonly': [['design_complete','=',True]]}" force_save="True"/>
@@ -35,7 +36,7 @@
               </group>
             </group>
           </page>
-          <page string="Design Build Checklist" name="page_design_build_checklist" attrs="{'invisible': ['|',['customer_design_approval','=',False],['record.rebuild_of.engineering_checklist_status','=','done']]}">
+          <page string="Design Build Checklist" name="page_design_build_checklist" attrs="{'invisible': ['|',['customer_design_approval','=',False],['rebuild_of_engineering_is_done','=',True]]}">
             <group name="group_design_build_checklist">
               <group name="group_design_build_checklist_left">
                 <field name="design_build_item_1" widget="boolean" attrs="{'readonly': [['design_build_complete','=',True]]}" force_save="True"/>
@@ -59,7 +60,7 @@
               </group>
             </group>
           </page>
-          <page string="Product Configuration Checklist" name="page_product_config_checklist" attrs="{'invisible': ['|',['design_build_complete','=',False],['record.rebuild_of.engineering_checklist_status','=','done']]}">
+          <page string="Product Configuration Checklist" name="page_product_config_checklist" attrs="{'invisible': ['|',['design_build_complete','=',False],['rebuild_of_engineering_is_done','=',True]]}">
             <group name="group_product_config_checklist">
               <group name="group_product_config_checklist_left">
                 <field name="product_config_item_1" widget="boolean" attrs="{'readonly': [['product_config_complete','=',True]]}" force_save="True"/>
